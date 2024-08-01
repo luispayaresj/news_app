@@ -11,3 +11,10 @@ class NewsLoaded extends NewsState {
 }
 
 class NewsError extends NewsState {}
+
+
+class NewsSearchLoaded extends NewsState {
+  final List<News> news;
+
+  NewsSearchLoaded(this.news);
+}

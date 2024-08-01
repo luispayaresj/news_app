@@ -7,6 +7,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   final NewsRepository newsRepository;
 
   NewsBloc(this.newsRepository) : super(NewsLoading()) {
+
     on<LoadNews>((event, emit) async {
       emit(NewsLoading());
       try {
@@ -16,5 +17,17 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         emit(NewsError());
       }
     });
+
+    on<SearchNews>((event, emit) async {
+      emit(NewsLoading());
+      try {
+        final news = newsRepository.searchNews(event.query);
+        emit(NewsSearchLoaded(news));
+      } catch (_) {
+        emit(NewsError());
+      }
+    });
   }
-}
+
+  }
+

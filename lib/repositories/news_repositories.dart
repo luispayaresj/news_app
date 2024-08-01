@@ -47,6 +47,11 @@ class NewsRepository {
     }
   }
 
+  List<News> searchNews(String query) {
+    return _news.where((news) => news.title.toLowerCase().contains(query.toLowerCase())).toList();
+  }
+
+
   List<Category> fetchCategories() {
     // Aquí iría la lógica para obtener las categorías
     return [

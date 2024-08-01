@@ -5,3 +5,9 @@ class LoadNews extends NewsEvent {
 
   LoadNews(this.categoryId);
 }
+
+class SearchNews extends NewsEvent {
+  final String query;
+
+  SearchNews(this.query);
+}
